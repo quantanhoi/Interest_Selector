@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import { categories } from '../categories';
 import { RootCategory } from './components/RootCategory';
 import Interesse from './components/Interesse';
+import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutlined';
+import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
+
 
 const Navigator: React.FC = () => {
     const [currentCategoryIndex, setCurrentCategoryIndex] = useState(0);
-    const [interesseListArray, setInteresseListArray] = useState<string[]>([]);
+    const [interesseListArray, setInteresseListArray] = useState<{ name: string; slug: string }[]>([]);
 
     const handleNextCategory = () => {
         setCurrentCategoryIndex((prevIndex) => prevIndex + 1);
@@ -15,19 +18,18 @@ const Navigator: React.FC = () => {
         setCurrentCategoryIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : 0));
     };
 
-    const handleSelectSubcategory = (subcategoryName: string) => {
+    const handleSelectSubcategory = (subcategory: { name: string; slug: string }) => {
         setInteresseListArray((prevList) => {
-            if (prevList.includes(subcategoryName)) {
-                return prevList.filter(name => name !== subcategoryName);
+            if (prevList.some(interest => interest.slug === subcategory.slug)) {
+                return prevList.filter(interest => interest.slug !== subcategory.slug);
             } else {
-                return [...prevList, subcategoryName];
+                return [...prevList, subcategory];
             }
         });
     };
 
-
-    const handleRemoveInterest = (interest: string) => {
-        setInteresseListArray((prevList) => prevList.filter(name => name !== interest));
+    const handleRemoveInterest = (interest: { name: string; slug: string }) => {
+        setInteresseListArray((prevList) => prevList.filter(item => item.slug !== interest.slug));
     };
 
     const isLastCategory = currentCategoryIndex >= categories.length;

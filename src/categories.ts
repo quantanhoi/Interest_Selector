@@ -46,13 +46,13 @@ export const categories = [
                     "name": "C#",
                     "slug": "C#",
                     "subcategories": [{
-                        "name": "ASP.NET",
-                        "slug": "ASP.NET",
+                        "name": "ASP.NOT",
+                        "slug": "asp.net",
                         "subcategories": null
                     },
                     {
                         "name": "MAUI",
-                        "slug": "MAUI",
+                        "slug": "maui",
                         "subcategories": null
                     }
                 ]

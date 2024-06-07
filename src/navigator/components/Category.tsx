@@ -14,15 +14,15 @@ export interface CategoryProps {
         slug: string;
         subcategories: Subcategory[] | null;
     };
-    interests: string[];
-    onSelectSubcategory: (subcategoryName: string) => void;
+    interests: { name: string; slug: string }[];
+    onSelectSubcategory: (subcategory: { name: string; slug: string }) => void;
 }
 
 const Category: React.FC<CategoryProps> = ({ category, interests, onSelectSubcategory }) => {
     const [showSubcategories, setShowSubcategories] = useState(false);
 
     const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        onSelectSubcategory(category.slug);
+        onSelectSubcategory({ name: category.name, slug: category.slug });
     };
 
     const toggleSubcategories = (event: React.MouseEvent) => {
@@ -30,12 +30,14 @@ const Category: React.FC<CategoryProps> = ({ category, interests, onSelectSubcat
         setShowSubcategories(!showSubcategories);
     };
 
+    const isInterestSelected = interests.some(interest => interest.slug === category.slug);
+
     return (
-        <div className='border-white margin1vh'>
-            <div className='flex center margin1vh'>
+        <div className='border-white margin2vh'>
+            <div className='flex left margin2vh'>
                 <FormControlLabel
-                    control={<Checkbox checked={interests.includes(category.slug)} onChange={handleCheckboxChange} />}
-                    label={category.name}
+                    control={<Checkbox checked={isInterestSelected} onChange={handleCheckboxChange} />}
+                    label=<span className="font-weight-900">{category.name}</span>
                 />
                 {category.subcategories && (
                     <div onClick={toggleSubcategories} style={{ cursor: 'pointer' }}>
@@ -44,9 +46,14 @@ const Category: React.FC<CategoryProps> = ({ category, interests, onSelectSubcat
                 )}
             </div>
             {showSubcategories && category.subcategories && (
-                <div style={{ paddingLeft: '20px' }}>
+                <div style={{ paddingLeft: '20px' }} >
                     {category.subcategories.map(subcategory => (
-                        <Category key={subcategory.slug} category={subcategory} interests={interests} onSelectSubcategory={onSelectSubcategory} />
+                        <Category
+                            key={subcategory.slug}
+                            category={subcategory}
+                            interests={interests}
+                            onSelectSubcategory={onSelectSubcategory}
+                        />
                     ))}
                 </div>
             )}

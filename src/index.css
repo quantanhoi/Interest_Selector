@@ -34,7 +34,13 @@ code {
   align-items: center;
 }
 
-.margin1vh {
+.left {
+  justify-content: flex-start;
+  align-items: flex-start;
+
+}
+
+.margin2vh {
   margin: 2vh;
 }
 .padding1vh {
@@ -43,7 +49,7 @@ code {
 
 .border-white {
   border: 1px solid white;
-  border-radius: 10px;
+  border-radius: 30px;
 }
 
 .content-box {
@@ -70,5 +76,13 @@ code {
 
 .max-width70 {
   max-width: 70%;
+}
+
+.font-size-1 {
+  font-size: 1rem;
+}
+
+.font-weight-900 {
+  font-weight: 900;
 }
 
