@@ -11,3 +11,43 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.flex-column {
+  display: flex;
+  flex-direction: column; 
+}
+
+.flex {
+  display: flex;
+
+}
+
+.center {
+  justify-content: center;
+  align-items: center;
+}
+
+.margin1vh {
+  margin: 2vh;
+}
+
+.border-white {
+  border: 1px solid white;
+  border-radius: 10px;
+}
+
+.react-button {
+  margin: 1vh;
+  border: 1px solid white;
+  border-radius: 10px;
+  background-color: transparent;
+  color: white;
+  padding: 1vh;
+  font-weight: 300;
+
+}
+.react-button:hover {
+  border: 3px solid white;
+} 
+
