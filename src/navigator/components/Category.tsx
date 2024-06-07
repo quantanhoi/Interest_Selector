@@ -1,5 +1,4 @@
-// Category.tsx
-import React from "react";
+import React, {useState} from "react";
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 
@@ -13,8 +12,23 @@ export interface CategoryProps {
 }
 
 const Category: React.FC<CategoryProps> = ({ category, onSelectSubcategory }) => {
+    const [showSubcategories, setShowSubcategories] = useState(false);
+
+
+    /**
+     * Handle the checkbox change event (add or remove subcategory from the interest list)
+     */
     const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         onSelectSubcategory(category.name);
+    };
+
+
+    /**
+     * Toggle the visibility of subcategories
+     */
+    const toggleSubcategories = (event: React.MouseEvent) => {
+        event.stopPropagation(); // Prevent event bubbling
+        setShowSubcategories(!showSubcategories);
     };
 
     return (
@@ -24,8 +38,11 @@ const Category: React.FC<CategoryProps> = ({ category, onSelectSubcategory }) =>
                     control={<Checkbox onChange={handleCheckboxChange} />}
                     label={category.name}
                 />
+                <div onClick={toggleSubcategories} style={{ cursor: 'pointer' }}>
+                    {showSubcategories ? '▲' : '▼'}
+                </div>
             </div>
-            {category.subcategories && (
+            {showSubcategories && category.subcategories && (
                 <div style={{ paddingLeft: '20px' }}>
                     {category.subcategories.map(subcategory => (
                         <Category key={subcategory.slug} category={subcategory} onSelectSubcategory={onSelectSubcategory} />

@@ -9,11 +9,11 @@ const Interesse: React.FC<InteresseProps> = ({ interesseList }) => {
     return (
         <div>
             <h2>Meine Interesse</h2>
-            <ul>
+            <div className='flex-row min-width max-width70'>
                 {interesseList.map((interest, index) => (
-                    <li key={index}>{interest}</li>
+                    <p className="border-white margin1vh padding1vh" key={index}>{interest}</p>
                 ))}
-            </ul>
+            </div>
         </div>
     );
 };

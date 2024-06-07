@@ -20,7 +20,13 @@ code {
 
 .flex {
   display: flex;
+}
 
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .center {
@@ -31,10 +37,17 @@ code {
 .margin1vh {
   margin: 2vh;
 }
+.padding1vh {
+  padding: 1vh;
+}
 
 .border-white {
   border: 1px solid white;
   border-radius: 10px;
+}
+
+.content-box {
+  max-width: 60vh;
 }
 
 .react-button {
@@ -50,4 +63,12 @@ code {
 .react-button:hover {
   border: 3px solid white;
 } 
+
+.min-width {
+  min-width: 0;
+}
+
+.max-width70 {
+  max-width: 70%;
+}
 
