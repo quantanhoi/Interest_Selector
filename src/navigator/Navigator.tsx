@@ -25,12 +25,17 @@ const Navigator: React.FC = () => {
         });
     };
 
+
+    const handleRemoveInterest = (interest: string) => {
+        setInteresseListArray((prevList) => prevList.filter(name => name !== interest));
+    };
+
     const isLastCategory = currentCategoryIndex >= categories.length;
 
     return (
         <div>
             {isLastCategory ? (
-                <Interesse interesseList={interesseListArray} />
+                <Interesse interesseList={interesseListArray} onRemoveInterest={handleRemoveInterest} />
             ) : (
                 <RootCategory
                     category={categories[currentCategoryIndex]}
