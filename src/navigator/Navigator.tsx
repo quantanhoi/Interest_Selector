@@ -46,22 +46,22 @@ const Navigator: React.FC = () => {
                 />
             )}
             <div className='flex center margin1vh'>
-                <button
+                <ArrowBackIosNewOutlinedIcon
                     onClick={handlePreviousCategory}
-                    disabled={currentCategoryIndex === 0}
-                    hidden={currentCategoryIndex === 0}
-                    className="react-button"
+                    style={{ cursor: currentCategoryIndex === 0 ? 'not-allowed' : 'pointer' , marginRight: '2vh'}}
+                    fontSize='large'
+                    
                 >
                     Previous
-                </button>
-                <button
+                </ArrowBackIosNewOutlinedIcon>
+                <ArrowForwardIosOutlinedIcon
                     onClick={handleNextCategory}
-                    disabled={isLastCategory}
-                    hidden={isLastCategory}
-                    className="react-button"
+                    style={{ cursor: isLastCategory ? 'not-allowed' : 'pointer', marginLeft: '2vh', }}
+                    fontSize='large'
+                    
                 >
                     Next
-                </button>
+                </ArrowForwardIosOutlinedIcon>
             </div>
         </div>
     );
