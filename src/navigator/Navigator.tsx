@@ -6,6 +6,7 @@ import Interesse from './components/Interesse';
 
 const Navigator: React.FC = () => {
     const [currentCategoryIndex, setCurrentCategoryIndex] = useState(0);
+    const [interesseListArray, setInteresseListArray] = useState<string[]>([]);
 
     const handleNextCategory = () => {
         setCurrentCategoryIndex((prevIndex) => prevIndex + 1);
@@ -15,14 +16,24 @@ const Navigator: React.FC = () => {
         setCurrentCategoryIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : 0));
     };
 
-    const isLastCategory = currentCategoryIndex >= categories.length -1 ;
+    const handleSelectSubcategory = (subcategoryName: string) => {
+        setInteresseListArray((prevList) => {
+            if (prevList.includes(subcategoryName)) {
+                return prevList.filter(name => name !== subcategoryName);
+            } else {
+                return [...prevList, subcategoryName];
+            }
+        });
+    };
+
+    const isLastCategory = currentCategoryIndex >= categories.length;
 
     return (
         <div>
             {isLastCategory ? (
-                <Interesse />
+                <Interesse interesseList={interesseListArray} />
             ) : (
-                <RootCategory category={categories[currentCategoryIndex]} />
+                <RootCategory category={categories[currentCategoryIndex]} onSelectSubcategory={handleSelectSubcategory} />
             )}
             <div className='flex center margin1vh'>
                 <button

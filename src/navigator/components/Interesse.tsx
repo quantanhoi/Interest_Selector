@@ -1,10 +1,19 @@
+// Interesse.tsx
 import React from 'react';
 
-const Interesse: React.FC = () => {
+interface InteresseProps {
+    interesseList: string[];
+}
+
+const Interesse: React.FC<InteresseProps> = ({ interesseList }) => {
     return (
         <div>
             <h2>Meine Interesse</h2>
-            <p>Hier können Sie Ihre Interessen verwalten.</p>
+            <ul>
+                {interesseList.map((interest, index) => (
+                    <li key={index}>{interest}</li>
+                ))}
+            </ul>
         </div>
     );
 };
