@@ -1,4 +1,3 @@
-// Interesse.tsx
 import React from 'react';
 
 interface InteresseProps {

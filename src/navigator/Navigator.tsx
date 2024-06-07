@@ -1,4 +1,3 @@
-// Navigator.tsx
 import React, { useState } from 'react';
 import { categories } from '../categories';
 import { RootCategory } from './components/RootCategory';
@@ -33,7 +32,11 @@ const Navigator: React.FC = () => {
             {isLastCategory ? (
                 <Interesse interesseList={interesseListArray} />
             ) : (
-                <RootCategory category={categories[currentCategoryIndex]} onSelectSubcategory={handleSelectSubcategory} />
+                <RootCategory
+                    category={categories[currentCategoryIndex]}
+                    interests={interesseListArray}
+                    onSelectSubcategory={handleSelectSubcategory}
+                />
             )}
             <div className='flex center margin1vh'>
                 <button
