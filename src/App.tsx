@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Navigator from './navigator/Navigator';
+import Navigator from './InterestSelector/Navigator';
 
 function App() {
   return (

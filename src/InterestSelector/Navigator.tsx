@@ -45,15 +45,18 @@ const Navigator: React.FC = () => {
                     onSelectSubcategory={handleSelectSubcategory}
                 />
             )}
+            
             <div className='flex center margin1vh'>
-                <ArrowBackIosNewOutlinedIcon
+                {currentCategoryIndex > 0 && (
+                    <ArrowBackIosNewOutlinedIcon
                     onClick={handlePreviousCategory}
-                    style={{ cursor: currentCategoryIndex === 0 ? 'not-allowed' : 'pointer' , marginRight: '2vh'}}
+                    style={{ cursor: 'pointer' , marginRight: '2vh'}}
                     fontSize='large'
                     
                 >
                     Previous
                 </ArrowBackIosNewOutlinedIcon>
+                )}
                 <ArrowForwardIosOutlinedIcon
                     onClick={handleNextCategory}
                     style={{ cursor: isLastCategory ? 'not-allowed' : 'pointer', marginLeft: '2vh', }}
